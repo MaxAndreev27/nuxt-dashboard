@@ -22,3 +22,9 @@ logs
 .env
 .env.*
 !.env.example
+
+# Ignore private/local settings VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json

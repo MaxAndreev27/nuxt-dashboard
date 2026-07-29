@@ -1,0 +1,35 @@
+{
+  // 1. Форматування при збереженні залишаємо увімкненим
+  "editor.formatOnSave": true,
+
+  // 2. Вимикаємо стандартний Prettier/Formatter для проєктних файлів
+  "[vue]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+
+  // 3. Примусово запускаємо авто-фікс ESLint при збереженні файлу
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+
+  // 4. Дозволяємо плагіну ESLint форматувати ці типи файлів
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue"
+  ]
+}
