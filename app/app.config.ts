@@ -1,3 +1,5 @@
+const viteApiBaseUrl = (import.meta as ImportMeta & { env?: { VITE_API_BASE_URL?: string } }).env?.VITE_API_BASE_URL
+
 export default defineAppConfig({
   ui: {
     colors: {
@@ -5,5 +7,5 @@ export default defineAppConfig({
       neutral: 'slate'
     }
   },
-  apiBaseUrl: import.meta.env.VITE_API_BASE_URL || 'https://fastapi-course-example.fly.dev'
+  apiBaseUrl: viteApiBaseUrl || 'https://fastapi-course-example.fly.dev'
 })
