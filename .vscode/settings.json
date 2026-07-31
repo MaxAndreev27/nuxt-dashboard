@@ -21,7 +21,7 @@
 
   // 3. Примусово запускаємо авто-фікс ESLint при збереженні файлу
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.eslint": "always"
   },
 
   // 4. Дозволяємо плагіну ESLint форматувати ці типи файлів
