@@ -1,13 +1,19 @@
-const TOKEN_STORAGE_KEY = 'access_token'
+export function setToken(token: string): void {
+  const tokenCookie = useCookie<string | null>('auth_token', {
+    maxAge: 60 * 60 * 24 * 7, // 7 днів
+    sameSite: 'lax',
+    path: '/'
+  })
 
-export function getToken(): string | null {
-  return localStorage.getItem(TOKEN_STORAGE_KEY)
+  tokenCookie.value = token
 }
 
-export function setToken(token: string): void {
-  localStorage.setItem(TOKEN_STORAGE_KEY, token)
+export function getToken(): string | null {
+  const tokenCookie = useCookie<string | null>('auth_token')
+  return tokenCookie.value
 }
 
 export function clearToken(): void {
-  localStorage.removeItem(TOKEN_STORAGE_KEY)
+  const tokenCookie = useCookie<string | null>('auth_token')
+  tokenCookie.value = null
 }
