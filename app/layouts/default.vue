@@ -6,7 +6,7 @@
       <slot />
     </UMain>
 
-    <USeparator icon="i-simple-icons-nuxtdotjs" />
+    <USeparator icon="i-simple-icons-nuxt" />
 
     <AppFooter />
   </div>
