@@ -6,11 +6,11 @@ import { useAuthStore } from '~/stores/auth'
 
 const route = useRoute()
 const router = useRouter()
-const auth = import.meta.client ? useAuthStore() : null
+const auth = useAuthStore()
 const isMounted = ref(false)
 
-const isAuthenticated = computed(() => !!auth?.isAuthenticated)
-const currentUserName = computed(() => auth?.user?.username ?? '')
+const isAuthenticated = computed(() => !!auth.isAuthenticated)
+const currentUserName = computed(() => auth.user?.username ?? '')
 
 const items = computed<NavigationMenuItem[]>(() => {
   const menuItems: NavigationMenuItem[] = [
@@ -33,10 +33,6 @@ const items = computed<NavigationMenuItem[]>(() => {
 })
 
 async function handleLogout() {
-  if (!auth) {
-    return
-  }
-
   auth.logout()
   await router.push('/')
 }
