@@ -17,7 +17,7 @@ async function handleSubmit() {
 </script>
 
 <template>
-  <div class="space-y-6 mx-auto max-w-md py-12">
+  <div class="mx-auto w-full max-w-md px-4 py-8 sm:px-6 sm:py-12">
     <div class="text-center space-y-2">
       <UBadge
         color="primary"
