@@ -1,8 +1,10 @@
 <script setup>
-const auth = useAuthStore()
+const auth = import.meta.client ? useAuthStore() : null
 
 onMounted(() => {
-  void auth.init()
+  if (auth) {
+    void auth.init()
+  }
 })
 
 useHead({

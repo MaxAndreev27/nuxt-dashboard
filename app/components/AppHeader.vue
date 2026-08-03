@@ -5,8 +5,11 @@ import type { NavigationMenuItem } from '@nuxt/ui'
 
 const route = useRoute()
 const router = useRouter()
-const auth = useAuthStore()
+const auth = import.meta.client ? useAuthStore() : null
 const isMounted = ref(false)
+
+const isAuthenticated = computed(() => !!auth?.isAuthenticated)
+const currentUserName = computed(() => auth?.user?.username ?? '')
 
 const items = computed<NavigationMenuItem[]>(() => {
   const menuItems: NavigationMenuItem[] = [
@@ -17,7 +20,7 @@ const items = computed<NavigationMenuItem[]>(() => {
     }
   ]
 
-  if (auth.isAuthenticated) {
+  if (isAuthenticated.value) {
     menuItems.push({
       label: 'Users',
       to: '/users',
@@ -29,6 +32,10 @@ const items = computed<NavigationMenuItem[]>(() => {
 })
 
 async function handleLogout() {
+  if (!auth) {
+    return
+  }
+
   auth.logout()
   await router.push('/')
 }
@@ -69,16 +76,16 @@ onMounted(() => {
           class="flex gap-2"
         >
           <div class="flex items-center gap-2">
-            <template v-if="auth.isAuthenticated">
+            <template v-if="isAuthenticated">
               <div class="flex items-center gap-3 pl-3 border-l border-gray-200 dark:border-gray-800">
                 <div class="hidden sm:flex items-center gap-2">
                   <UAvatar
-                    :alt="auth.user?.username || 'User'"
+                    :alt="currentUserName || 'User'"
                     size="sm"
                     class="bg-primary-500/10 text-primary-500 font-semibold"
                   />
                   <span class="text-sm font-medium text-gray-700 dark:text-gray-200">
-                    {{ auth.user?.username }}
+                    {{ currentUserName }}
                   </span>
                 </div>
 
@@ -141,15 +148,15 @@ onMounted(() => {
 
         <div class="my-2 border-t border-gray-200 dark:border-gray-800" />
 
-        <template v-if="auth.isAuthenticated">
+        <template v-if="isAuthenticated">
           <div class="flex items-center gap-3 rounded-lg border border-gray-200 px-3 py-2 dark:border-gray-800">
             <UAvatar
-              :alt="auth.user?.username || 'User'"
+              :alt="currentUserName || 'User'"
               size="sm"
               class="bg-primary-500/10 text-primary-500 font-semibold"
             />
             <span class="text-sm font-medium text-gray-700 dark:text-gray-200">
-              {{ auth.user?.username }}
+              {{ currentUserName }}
             </span>
           </div>
 
