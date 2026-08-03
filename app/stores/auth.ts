@@ -61,10 +61,19 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   async function init(): Promise<void> {
-    if (initialized.value) return
-    if (token.value) {
+    const persistedToken = getToken()
+
+    if (initialized.value && (!persistedToken || !!user.value)) {
+      return
+    }
+
+    if (persistedToken) {
+      token.value = persistedToken
+      await fetchUser()
+    } else if (token.value) {
       await fetchUser()
     }
+
     initialized.value = true
   }
 
