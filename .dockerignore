@@ -1,0 +1,32 @@
+# flyctl launch added from .gitignore
+# Nuxt dev/build outputs
+**/.output
+**/.data
+**/.nuxt
+**/.nitro
+**/.cache
+**/dist
+
+# Node dependencies
+**/node_modules
+
+# Logs
+**/logs
+**/*.log
+
+# Misc
+**/.DS_Store
+**/.fleet
+**/.idea
+
+# Local env files
+**/.env
+**/.env.*
+!**/.env.example
+
+# Ignore private/local settings VS Code
+**/.vscode/*
+!**/.vscode/settings.json
+!**/.vscode/extensions.json
+!**/.vscode/launch.json
+fly.toml
