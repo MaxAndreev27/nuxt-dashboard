@@ -1,64 +1,120 @@
-# Nuxt Starter Template
+# Nuxt Dashboard
 
-[![Nuxt UI](https://img.shields.io/badge/Made%20with-Nuxt%20UI-00DC82?logo=nuxt&labelColor=020420)](https://ui.nuxt.com)
+Nuxt 4 dashboard application with authentication, hero management, and user management.
 
-Use this template to get started with [Nuxt UI](https://ui.nuxt.com) quickly.
+## Stack
 
-- [Live demo](https://starter-template.nuxt.dev/)
-- [Documentation](https://ui.nuxt.com/docs/getting-started/installation/nuxt)
+- Nuxt 4
+- Nuxt UI 4
+- Pinia
+- TypeScript
+- OpenAPI client generation via `@hey-api/openapi-ts`
+- Fly.io deployment
 
-<a href="https://starter-template.nuxt.dev/" target="_blank">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://ui.nuxt.com/assets/templates/nuxt/starter-dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="https://ui.nuxt.com/assets/templates/nuxt/starter-light.png">
-    <img alt="Nuxt Starter Template" src="https://ui.nuxt.com/assets/templates/nuxt/starter-light.png" width="830" height="466">
-  </picture>
-</a>
+## Features
 
-> The starter template for Vue is on https://github.com/nuxt-ui-templates/starter-vue.
+- Login and registration flow
+- Auth-protected routes (`/heroes`, `/users`)
+- Heroes pages (list, details, create)
+- Users list for authorized users
+- Generated typed API client in `app/client/`
 
-## Quick Start
+## Requirements
 
-```bash [Terminal]
-npm create nuxt@latest -- -t ui
-```
+- Node.js 22+
+- pnpm 11+
 
-## Deploy your own
+## Getting Started
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-name=starter&repository-url=https%3A%2F%2Fgithub.com%2Fnuxt-ui-templates%2Fstarter&demo-image=https%3A%2F%2Fui.nuxt.com%2Fassets%2Ftemplates%2Fnuxt%2Fstarter-dark.png&demo-url=https%3A%2F%2Fstarter-template.nuxt.dev%2F&demo-title=Nuxt%20Starter%20Template&demo-description=A%20minimal%20template%20to%20get%20started%20with%20Nuxt%20UI.)
-
-## Setup
-
-Make sure to install the dependencies:
+Install dependencies:
 
 ```bash
 pnpm install
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+Run development server:
 
 ```bash
 pnpm dev
 ```
 
-## Production
+App will be available at `http://localhost:3000`.
 
-Build the application for production:
+## Environment Configuration
+
+The frontend API base URL is configured via Nuxt runtime config:
+
+- `public.apiBaseUrl` in `nuxt.config.ts`
+
+For production, set it using environment variables (for example in Fly secrets or deploy environment):
+
+```bash
+NUXT_PUBLIC_API_BASE_URL=https://your-api.example.com
+```
+
+## API Client Generation
+
+The OpenAPI spec is stored in `openapi.json`.
+
+Regenerate client files in `app/client/`:
+
+```bash
+pnpm gen-api
+```
+
+Generator config lives in `openapi-ts.config.ts`.
+
+## Scripts
+
+- `pnpm dev` - start dev server
+- `pnpm build` - build production bundle
+- `pnpm preview` - preview built app locally
+- `pnpm typecheck` - run Nuxt type checking
+- `pnpm lint` - run ESLint
+- `pnpm lint:fix` - run ESLint with auto-fix
+- `pnpm gen-api` - regenerate typed API client from OpenAPI
+
+## Production Build
+
+Build locally:
 
 ```bash
 pnpm build
 ```
 
-Locally preview production build:
+Preview build locally:
 
 ```bash
 pnpm preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## Deploy to Fly.io
 
-## Renovate integration
+Project contains ready-to-use `Dockerfile` and `fly.toml`.
 
-Install [Renovate GitHub app](https://github.com/apps/renovate/installations/select_target) on your repository and you are good to go.
+Typical deploy flow:
+
+```bash
+fly deploy
+```
+
+Useful commands:
+
+```bash
+fly logs
+fly status
+```
+
+## Project Structure
+
+- `app/pages/` - route pages
+- `app/components/` - UI components
+- `app/stores/` - Pinia stores
+- `app/middleware/` - route middleware
+- `app/plugins/` - Nuxt plugins
+- `app/client/` - generated API client
+
+## Notes
+
+- Icon collections are configured in `nuxt.config.ts` for stable production SSR on Fly.
+- Auth token is stored via cookie helpers in `app/utils/token.ts`.
