@@ -1,4 +1,6 @@
 <script setup>
+import { useAuthStore } from '~/stores/auth'
+
 const auth = import.meta.client ? useAuthStore() : null
 
 onMounted(() => {

@@ -2,6 +2,7 @@
 import { computed, onMounted, ref } from 'vue'
 
 import type { NavigationMenuItem } from '@nuxt/ui'
+import { useAuthStore } from '~/stores/auth'
 
 const route = useRoute()
 const router = useRouter()

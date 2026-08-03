@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { usersV1RegisterUser } from '~/client/sdk.gen'
+import { useAuthStore } from '~/stores/auth'
 
 const route = useRoute()
 const router = useRouter()

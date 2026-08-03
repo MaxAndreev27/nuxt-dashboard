@@ -3,6 +3,7 @@ import { onMounted, ref } from 'vue'
 
 import type { UserPublic } from '~/client'
 import { usersV1ReadUsers } from '~/client/sdk.gen'
+import { useAuthStore } from '~/stores/auth'
 
 definePageMeta({
   middleware: ['auth']
