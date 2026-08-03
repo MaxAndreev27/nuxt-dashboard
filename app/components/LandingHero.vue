@@ -34,7 +34,7 @@
           to="/register"
           size="xl"
           color="primary"
-          icon="i-heroicons-rocket-launch"
+          icon="i-lucide-rocket"
           class="w-full sm:w-auto"
         >
           Get Started
@@ -45,7 +45,7 @@
           size="xl"
           color="secondary"
           variant="soft"
-          icon="i-heroicons-sparkles"
+          icon="i-lucide-sparkles"
           class="w-full sm:w-auto"
         >
           Explore Heroes

@@ -49,7 +49,7 @@ async function handleSubmit() {
             v-model="username"
             type="text"
             placeholder="Enter your username"
-            icon="i-heroicons-user"
+            icon="i-lucide-user-round"
             size="lg"
             class="w-full"
             autocomplete="username"
@@ -64,7 +64,7 @@ async function handleSubmit() {
             v-model="password"
             :type="showPassword ? 'text' : 'password'"
             placeholder="Enter your password"
-            icon="i-heroicons-lock-closed"
+            icon="i-lucide-lock"
             size="lg"
             class="w-full"
             autocomplete="current-password"
@@ -74,7 +74,7 @@ async function handleSubmit() {
                 color="neutral"
                 variant="link"
                 size="sm"
-                :icon="showPassword ? 'i-heroicons-eye-slash' : 'i-heroicons-eye'"
+                :icon="showPassword ? 'i-lucide-eye-off' : 'i-lucide-eye'"
                 :aria-label="showPassword ? 'Hide password' : 'Show password'"
                 @click="showPassword = !showPassword"
               />
@@ -86,7 +86,7 @@ async function handleSubmit() {
           v-if="auth.error"
           color="error"
           variant="soft"
-          icon="i-heroicons-exclamation-triangle"
+          icon="i-lucide-circle-alert"
           :title="auth.error"
         />
 
@@ -96,7 +96,7 @@ async function handleSubmit() {
           size="lg"
           color="primary"
           :loading="auth.loading"
-          icon="i-heroicons-arrow-right-end-on-rectangle"
+          icon="i-lucide-log-in"
         >
           {{ auth.loading ? 'Signing in...' : 'Sign in' }}
         </UButton>

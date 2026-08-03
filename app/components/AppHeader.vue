@@ -1,9 +1,12 @@
 <script lang="ts" setup>
+import { computed, onMounted, ref } from 'vue'
+
 import type { NavigationMenuItem } from '@nuxt/ui'
 
 const route = useRoute()
 const router = useRouter()
 const auth = useAuthStore()
+const isMounted = ref(false)
 
 const items = computed<NavigationMenuItem[]>(() => {
   const menuItems: NavigationMenuItem[] = [
@@ -29,6 +32,10 @@ async function handleLogout() {
   auth.logout()
   await router.push('/')
 }
+
+onMounted(() => {
+  isMounted.value = true
+})
 </script>
 
 <template>
@@ -57,7 +64,10 @@ async function handleLogout() {
           variant="ghost"
         />
 
-        <div class="flex gap-2">
+        <div
+          v-if="isMounted"
+          class="flex gap-2"
+        >
           <div class="flex items-center gap-2">
             <template v-if="auth.isAuthenticated">
               <div class="flex items-center gap-3 pl-3 border-l border-gray-200 dark:border-gray-800">
@@ -76,7 +86,7 @@ async function handleLogout() {
                   color="error"
                   variant="ghost"
                   size="sm"
-                  icon="i-heroicons-arrow-right-start-on-rectangle"
+                  icon="i-lucide-log-out"
                   aria-label="Logout"
                   @click="handleLogout"
                 >
@@ -102,7 +112,7 @@ async function handleLogout() {
                   color="primary"
                   variant="solid"
                   size="sm"
-                  icon="i-heroicons-user-plus"
+                  icon="i-lucide-user-round-plus"
                   class="hidden sm:inline-flex"
                 >
                   Register
@@ -115,7 +125,10 @@ async function handleLogout() {
     </template>
 
     <template #body>
-      <div class="flex flex-col gap-2 p-4">
+      <div
+        v-if="isMounted"
+        class="flex flex-col gap-2 p-4"
+      >
         <NuxtLink
           v-for="item in items"
           :key="item.label"
@@ -143,7 +156,7 @@ async function handleLogout() {
           <UButton
             color="error"
             variant="soft"
-            icon="i-heroicons-arrow-right-start-on-rectangle"
+            icon="i-lucide-log-out"
             class="justify-start"
             @click="handleLogout"
           >
@@ -156,7 +169,7 @@ async function handleLogout() {
             to="/login"
             color="neutral"
             variant="soft"
-            icon="i-heroicons-arrow-right-end-on-rectangle"
+            icon="i-lucide-log-in"
             class="justify-start"
           >
             Sign in
@@ -166,7 +179,7 @@ async function handleLogout() {
             to="/register"
             color="primary"
             variant="solid"
-            icon="i-heroicons-user-plus"
+            icon="i-lucide-user-round-plus"
             class="justify-start"
           >
             Register

@@ -61,7 +61,7 @@ onMounted(loadHeroes)
 
       <UButton
         to="/heroes/create"
-        icon="i-heroicons-plus"
+        icon="i-lucide-plus"
         color="primary"
       >
         Create hero
@@ -96,7 +96,7 @@ onMounted(loadHeroes)
         v-else-if="error"
         color="error"
         variant="soft"
-        icon="i-heroicons-exclamation-triangle"
+        icon="i-lucide-circle-alert"
         :title="error"
       />
 

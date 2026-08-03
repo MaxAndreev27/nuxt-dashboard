@@ -91,7 +91,7 @@ onMounted(load)
         v-else-if="error"
         color="error"
         variant="soft"
-        icon="i-heroicons-exclamation-triangle"
+        icon="i-lucide-circle-alert"
         :title="error"
       />
 
