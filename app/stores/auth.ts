@@ -11,6 +11,7 @@ export const useAuthStore = defineStore('auth', () => {
   const loading = ref(false)
   const error = ref<string | null>(null)
   const initialized = ref(false)
+  let initPromise: Promise<void> | null = null
 
   const isAuthenticated = computed(() => !!token.value)
 
@@ -37,18 +38,26 @@ export const useAuthStore = defineStore('auth', () => {
     }
   }
 
-  async function fetchUser(): Promise<void> {
+  async function fetchUser(options?: { logoutOnError?: boolean }): Promise<void> {
     if (!token.value) return
     loading.value = true
     try {
       const { data, error: err } = await usersV1ReadUsersMe()
       if (err || !data) {
-        logout()
+        if (options?.logoutOnError !== false) {
+          logout()
+        } else {
+          user.value = null
+        }
         return
       }
       user.value = data
     } catch {
-      logout()
+      if (options?.logoutOnError !== false) {
+        logout()
+      } else {
+        user.value = null
+      }
     } finally {
       loading.value = false
     }
@@ -61,20 +70,34 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   async function init(): Promise<void> {
+    if (initPromise) {
+      await initPromise
+      return
+    }
+
     const persistedToken = getToken()
 
     if (initialized.value && (!persistedToken || !!user.value)) {
       return
     }
 
-    if (persistedToken) {
-      token.value = persistedToken
-      await fetchUser()
-    } else if (token.value) {
-      await fetchUser()
-    }
+    initPromise = (async () => {
+      if (persistedToken) {
+        token.value = persistedToken
+      }
 
-    initialized.value = true
+      initialized.value = true
+
+      if (token.value) {
+        void fetchUser({ logoutOnError: false })
+      }
+    })()
+
+    try {
+      await initPromise
+    } finally {
+      initPromise = null
+    }
   }
 
   return {

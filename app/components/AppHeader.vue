@@ -5,13 +5,25 @@ const route = useRoute()
 const router = useRouter()
 const auth = useAuthStore()
 
-const items = computed<NavigationMenuItem[]>(() => [
-  {
-    label: 'Heroes',
-    to: '/heroes',
-    active: route.path.startsWith('/heroes')
+const items = computed<NavigationMenuItem[]>(() => {
+  const menuItems: NavigationMenuItem[] = [
+    {
+      label: 'Heroes',
+      to: '/heroes',
+      active: route.path.startsWith('/heroes')
+    }
+  ]
+
+  if (auth.isAuthenticated) {
+    menuItems.push({
+      label: 'Users',
+      to: '/users',
+      active: route.path.startsWith('/users')
+    })
   }
-])
+
+  return menuItems
+})
 
 async function handleLogout() {
   auth.logout()
