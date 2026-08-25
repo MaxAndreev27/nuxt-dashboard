@@ -2,6 +2,12 @@
 
 Nuxt 4 dashboard application with authentication, hero management, and user management.
 
+## Project Goals
+
+- Provide a clean Nuxt 4 dashboard starter for authenticated apps
+- Demonstrate typed API integration using OpenAPI code generation
+- Offer a practical baseline for CRUD-style admin workflows
+
 ## Stack
 
 - Nuxt 4
@@ -118,3 +124,11 @@ fly status
 
 - Icon collections are configured in `nuxt.config.ts` for stable production SSR on Fly.
 - Auth token is stored via cookie helpers in `app/utils/token.ts`.
+
+## Community Standards
+
+- Code of Conduct: [`.github/CODE_OF_CONDUCT.md`](.github/CODE_OF_CONDUCT.md)
+- Contributing guide: [`.github/CONTRIBUTING.md`](.github/CONTRIBUTING.md)
+- Security policy: [`.github/SECURITY.md`](.github/SECURITY.md)
+- Issue templates: [`.github/ISSUE_TEMPLATE/`](.github/ISSUE_TEMPLATE/)
+- Pull request template: [`.github/pull_request_template.md`](.github/pull_request_template.md)
