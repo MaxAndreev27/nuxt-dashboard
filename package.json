@@ -13,20 +13,20 @@
     "gen-api": "openapi-ts"
   },
   "dependencies": {
-    "@iconify-json/lucide": "^1.2.120",
-    "@iconify-json/simple-icons": "^1.2.92",
-    "@nuxt/ui": "^4.10.0",
-    "@pinia/nuxt": "^1.0.1",
-    "nuxt": "^4.4.8",
-    "pinia": "^4.0.2",
+    "@iconify-json/lucide": "^1.2.126",
+    "@iconify-json/simple-icons": "^1.2.93",
+    "@nuxt/ui": "^4.11.0",
+    "@pinia/nuxt": "^1.0.2",
+    "nuxt": "^4.5.2",
+    "pinia": "^4.0.3",
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
     "@hey-api/openapi-ts": "^0.99.0",
-    "@nuxt/eslint": "^1.16.0",
-    "eslint": "^10.8.0",
+    "@nuxt/eslint": "^1.17.0",
+    "eslint": "^10.9.1",
     "typescript": "^6.0.3",
-    "vue-tsc": "^3.3.8"
+    "vue-tsc": "^3.3.11"
   },
-  "packageManager": "pnpm@11.17.0"
+  "packageManager": "pnpm@11.24.0"
 }
