@@ -13,9 +13,9 @@
     "gen-api": "openapi-ts"
   },
   "dependencies": {
-    "@iconify-json/lucide": "^1.2.126",
-    "@iconify-json/simple-icons": "^1.2.93",
-    "@nuxt/ui": "^4.11.0",
+    "@iconify-json/lucide": "^1.2.137",
+    "@iconify-json/simple-icons": "^1.2.97",
+    "@nuxt/ui": "^4.11.2",
     "@pinia/nuxt": "^1.0.2",
     "nuxt": "^4.5.2",
     "pinia": "^4.0.3",
@@ -24,9 +24,9 @@
   "devDependencies": {
     "@hey-api/openapi-ts": "^0.99.0",
     "@nuxt/eslint": "^1.17.0",
-    "eslint": "^10.9.1",
+    "eslint": "^10.11.0",
     "typescript": "^6.0.3",
     "vue-tsc": "^3.3.11"
   },
-  "packageManager": "pnpm@11.24.0"
+  "packageManager": "pnpm@12.6.0"
 }
