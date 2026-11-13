@@ -10,7 +10,7 @@ Thank you for your interest in improving this project.
 
 ## Development Setup
 
-1. Install Node.js 22+ and pnpm 11+.
+1. Install Node.js 24+ and pnpm 11+.
 2. Install dependencies:
    ```bash
    pnpm install

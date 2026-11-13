@@ -27,7 +27,7 @@ Nuxt 4 dashboard application with authentication, hero management, and user mana
 
 ## Requirements
 
-- Node.js 22+
+- Node.js 24+
 - pnpm 11+
 
 ## Getting Started

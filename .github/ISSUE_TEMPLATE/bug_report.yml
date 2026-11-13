@@ -51,7 +51,7 @@ body:
     attributes:
       label: Environment
       description: OS, browser, Node.js, pnpm
-      placeholder: Ubuntu 24.04, Chrome 128, Node 22, pnpm 11
+      placeholder: Ubuntu 24.04, Chrome 128, Node 24, pnpm 11
   - type: textarea
     id: logs
     attributes:
